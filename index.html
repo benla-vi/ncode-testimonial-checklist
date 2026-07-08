@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#14161d" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="עדויות nCode" />
+<title>שאלון עדויות · nCode</title>
+<style>html,body{margin:0;background:#14161d;}</style>
+</head>
+<body>
+<style>
+  :root {
+    --ink: #14161d;
+    --ink-2: #1b1e28;
+    --panel: #1e2230;
+    --panel-2: #232838;
+    --line: #2e3444;
+    --text: #eef0f6;
+    --muted: #969db0;
+    --faint: #6b7185;
+    --coral: #ff6a3d;
+    --coral-soft: rgba(255, 106, 61, 0.14);
+    --gold: #f0b64c;
+    --gold-soft: rgba(240, 182, 76, 0.12);
+    --good: #4fd18b;
+    --radius: 16px;
+    --tap: 15px;
+    font-synthesis-weight: none;
+  }
+
+  * { box-sizing: border-box; }
+
+  main {
+    direction: rtl;
+    text-align: right;
+    font-family: system-ui, -apple-system, "SF Hebrew", "Segoe UI", sans-serif;
+    background:
+      radial-gradient(1200px 600px at 100% -10%, rgba(255, 106, 61, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 0% 0%, rgba(240, 182, 76, 0.05), transparent 55%),
+      var(--ink);
+    color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0 0 120px;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- sticky header ---------- */
+  .top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(20, 22, 29, 0.82);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top-inner { max-width: 640px; margin: 0 auto; padding: 12px 16px 10px; }
+  .brandrow { display: flex; align-items: center; gap: 10px; }
+  .logo {
+    font-weight: 800; font-size: 15px; letter-spacing: .5px;
+    background: var(--coral); color: #1a1206;
+    padding: 3px 9px; border-radius: 8px; direction: ltr;
+  }
+  .brandrow h1 {
+    font-size: 15px; font-weight: 650; margin: 0; color: var(--text);
+    letter-spacing: .2px;
+  }
+  .brandrow .spacer { flex: 1; }
+  .reset {
+    appearance: none; border: 1px solid var(--line); background: var(--panel);
+    color: var(--muted); font: inherit; font-size: 13px; font-weight: 600;
+    padding: 7px 13px; border-radius: 10px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color .15s, color .15s, background .15s;
+  }
+  .reset:hover { color: var(--text); border-color: var(--coral); }
+  .reset:active { background: var(--panel-2); }
+
+  .studentfield {
+    margin-top: 10px; display: flex; align-items: center; gap: 9px;
+    background: var(--ink-2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 4px 6px 4px 14px;
+  }
+  .studentfield label {
+    font-size: 12px; font-weight: 700; color: var(--faint);
+    letter-spacing: .3px; white-space: nowrap;
+  }
+  .studentfield input {
+    flex: 1; background: transparent; border: 0; color: var(--text);
+    font: inherit; font-size: 15px; padding: 8px 4px; min-width: 0;
+  }
+  .studentfield input::placeholder { color: var(--faint); }
+  .studentfield input:focus { outline: none; }
+  .studentfield input:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; border-radius: 6px; }
+
+  .progress {
+    margin-top: 10px; display: flex; align-items: center; gap: 10px;
+  }
+  .bar { flex: 1; height: 7px; background: var(--panel); border-radius: 99px; overflow: hidden; }
+  .bar > i {
+    display: block; height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--coral));
+    border-radius: 99px; transition: width .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .count {
+    font-size: 13px; font-weight: 700; color: var(--muted);
+    font-variant-numeric: tabular-nums; direction: ltr; min-width: 44px; text-align: left;
+  }
+
+  /* ---------- intro ---------- */
+  .intro { padding: 20px 0 4px; }
+  .intro .kick {
+    font-size: 12px; font-weight: 800; letter-spacing: 2px;
+    color: var(--coral); text-transform: uppercase; direction: ltr; text-align: right;
+  }
+  .intro h2 {
+    font-size: clamp(24px, 6vw, 32px); line-height: 1.12; margin: 8px 0 10px;
+    font-weight: 800; text-wrap: balance; letter-spacing: -.4px;
+  }
+  .intro p { color: var(--muted); font-size: 14.5px; margin: 0; max-width: 46ch; }
+
+  .goldnote {
+    margin: 16px 0 4px; display: grid; gap: 8px;
+  }
+  .goldnote .g {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: var(--gold-soft); border: 1px solid rgba(240,182,76,.28);
+    border-radius: 12px; padding: 11px 13px;
+  }
+  .goldnote .g b { color: var(--gold); }
+  .goldnote .g .star { color: var(--gold); font-size: 15px; line-height: 1.5; }
+  .goldnote .g span { font-size: 13.5px; color: #e7dcc4; }
+
+  /* ---------- phase ---------- */
+  .phase { margin-top: 22px; }
+  .phase-head { display: flex; align-items: baseline; gap: 10px; margin: 0 2px 11px; }
+  .phase-num {
+    font-size: 12px; font-weight: 800; color: var(--faint);
+    font-variant-numeric: tabular-nums; direction: ltr;
+    border: 1px solid var(--line); border-radius: 7px; padding: 2px 7px;
+  }
+  .phase-head h3 { font-size: 17px; font-weight: 750; margin: 0; letter-spacing: -.2px; }
+  .phase-head .sub { font-size: 12.5px; color: var(--faint); font-weight: 500; }
+
+  .list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+  .q {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: var(--tap);
+    cursor: pointer; user-select: none;
+    transition: background .15s, border-color .15s, transform .06s;
+  }
+  .q:hover { border-color: #3a4256; }
+  .q:active { transform: scale(.992); }
+
+  .box {
+    flex: none; width: 24px; height: 24px; margin-top: 1px;
+    border: 2px solid #3f465a; border-radius: 8px;
+    display: grid; place-items: center;
+    transition: background .15s, border-color .15s;
+  }
+  .box svg { width: 14px; height: 14px; opacity: 0; transform: scale(.6); transition: opacity .15s, transform .15s; }
+  .q .txt { font-size: 15.5px; line-height: 1.45; }
+  .q .txt .hint { display: block; margin-top: 4px; font-size: 12.5px; color: var(--faint); }
+
+  .q[aria-checked="true"] { background: var(--ink-2); border-color: var(--line); }
+  .q[aria-checked="true"] .box { background: var(--good); border-color: var(--good); }
+  .q[aria-checked="true"] .box svg { opacity: 1; transform: scale(1); }
+  .q[aria-checked="true"] .txt { color: var(--faint); text-decoration: line-through; text-decoration-color: rgba(150,157,176,.5); }
+  .q[aria-checked="true"] .txt .hint { text-decoration: none; }
+
+  /* golden-shot rows */
+  .q.gold {
+    border-color: rgba(240,182,76,.42);
+    background: linear-gradient(180deg, var(--gold-soft), transparent 140%), var(--panel);
+    box-shadow: inset 3px 0 0 var(--gold);
+  }
+  .q.gold .box { border-color: var(--gold); }
+  .q.gold[aria-checked="true"] .box { background: var(--good); border-color: var(--good); }
+  .tag {
+    display: inline-flex; align-items: center; gap: 5px; margin-bottom: 6px;
+    font-size: 10.5px; font-weight: 800; letter-spacing: .8px;
+    color: var(--gold); text-transform: none;
+  }
+  .tag::before { content: "★"; font-size: 11px; }
+
+  /* strong-clip marker */
+  .q.clip { box-shadow: inset 3px 0 0 var(--coral); border-color: rgba(255,106,61,.34); }
+  .miniclip {
+    display: inline-block; margin-bottom: 5px; font-size: 10.5px; font-weight: 800;
+    letter-spacing: .6px; color: var(--coral);
+  }
+
+  /* ---------- rules footer ---------- */
+  .rules {
+    margin-top: 30px; background: var(--ink-2); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 18px;
+  }
+  .rules h4 { margin: 0 0 12px; font-size: 13px; font-weight: 800; letter-spacing: 1px; color: var(--coral); text-transform: uppercase; direction: ltr; text-align: right; }
+  .rules ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+  .rules li { display: flex; gap: 10px; font-size: 14px; color: var(--text); align-items: flex-start; }
+  .rules li b { color: #fff; }
+  .rules li .n { flex: none; width: 22px; height: 22px; border-radius: 7px; background: var(--coral-soft); color: var(--coral); font-weight: 800; font-size: 12px; display: grid; place-items: center; direction: ltr; }
+
+  .foot { text-align: center; color: var(--faint); font-size: 12px; margin-top: 22px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<main>
+  <div class="top">
+    <div class="top-inner">
+      <div class="brandrow">
+        <span class="logo">nCode</span>
+        <h1>שאלון עדויות · צ׳ק־ליסט סט</h1>
+        <span class="spacer"></span>
+        <button class="reset" id="resetBtn" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+          סט חדש
+        </button>
+      </div>
+
+      <div class="studentfield">
+        <label for="student">תלמיד/ה</label>
+        <input id="student" type="text" placeholder="שם המצולם/ת…" autocomplete="off" />
+      </div>
+
+      <div class="progress">
+        <div class="bar"><i id="barFill"></i></div>
+        <span class="count" id="count">0/23</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section class="intro">
+      <div class="kick">Testimonial Shoot</div>
+      <h2>עדות טובה היא סיפור מסע — לא מחמאה</h2>
+      <p>התלמיד הוא הגיבור, אתה המנטור, הקורס הוא הגשר. תסמן כל שאלה שסגרת. שתי שאלות הן <b style="color:var(--gold)">יריות זהב</b> — בלעדיהן אין עדות.</p>
+
+      <div class="goldnote">
+        <div class="g"><span class="star">★</span><span><b>יריית זהב 1 —</b> "לא ידעתי לתכנת שורה, ובניתי X". מנטרל בבת אחת: סקאם · לא טכני · לא בשבילי.</span></div>
+        <div class="g"><span class="star">★</span><span><b>יריית זהב 2 —</b> מספר ראשון עם תאריך. לקוח/מכירה ראשונים: כמה × כמה = כמה בחודש.</span></div>
+      </div>
+    </section>
+
+    <!-- Phase 0 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">00</span><h3>חימום</h3><span class="sub">· לא נכנס לעריכה</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ספר בכמה מילים מי אתה ומה עשית <b>לפני</b> nCode</span></li>
+      </ul>
+    </section>
+
+    <!-- Phase 1 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">01</span><h3>ה"לפני"</h3><span class="sub">· הכאב · כאן הצופה מזהה את עצמו</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה היה המצב שלך לפני? עם מה נאבקת?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה כבר ניסית כדי לבנות / להרוויח — ולמה זה לא עבד?</span></li>
+        <li class="q gold" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="tag">יריית זהב 1</span>מה היה הרקע הטכני שלך? כמה קוד ידעת לפני?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ממה הכי פחדת? <span class="hint">לא מספיק טכני · מבוגר מדי · אין רעיון · אין זמן</span></span></li>
+      </ul>
+    </section>
+
+    <!-- Phase 2 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">02</span><h3>היסוס והחלטה</h3><span class="sub">· השלב הכי ממיר</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה היה ההיסוס הכי גדול <b>לפני</b> ששילמת?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה גרם לך לחשוב שאולי זה לא יעבוד דווקא בשבילך?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">בטח כבר נכווית מקורסים באינטרנט — מה היה פה שונה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה בסוף הכריע? למה אמרת כן?</span></li>
+        <li class="q clip" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="miniclip">◆ לרוב הקליפ הכי חזק</span>למישהו שיושב עכשיו על הגדר ומרגיש בדיוק כמוך — מה תגיד לו?</span></li>
+      </ul>
+    </section>
+
+    <!-- Phase 3 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">03</span><h3>החוויה</h3><span class="sub">· מה קרה מבפנים</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הפתיע אותך לגבי איך זה <b>באמת</b> עובד מבפנים?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">היה רגע שפתאום נפל האסימון? מה הוא היה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">התחלת בלי רקע — איך התמודדת עם הצד הטכני / ה-AI?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">הליווי והקהילה — מה נתנו לך שלא היית מקבל לבד?</span></li>
+      </ul>
+    </section>
+
+    <!-- Phase 4 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">04</span><h3>ה"אחרי"</h3><span class="sub">· התוצאה · כאן דורשים מספרים</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה אתה יכול לעשות היום שפשוט לא יכולת קודם?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הדבר הראשון שבנית ושחררת לעולם — ומתי בדיוק?</span></li>
+        <li class="q gold" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="tag">יריית זהב 2</span>מתי קיבלת לקוח / תשלום ראשון? <b>כמה, ותוך כמה זמן?</b><span class="hint">תלחץ למספר מדויק: כמה לקוחות × כמה ₪ = כמה בחודש</span></span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה זה היה עולה לך לשכור מפתח שיבנה לך את זה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הפתיע אותך במהירות שזה קרה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מעבר לכסף — איך זה שינה איך אתה מרגיש לגבי עצמך ולגבי העתיד?</span></li>
+      </ul>
+    </section>
+
+    <!-- Phase 5 -->
+    <section class="phase">
+      <div class="phase-head"><span class="phase-num">05</span><h3>למי זה מתאים</h3><span class="sub">· הסגירה · מעביר את המקל לצופה</span></div>
+      <ul class="list">
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ספר בדיוק על מה שבנית — שם, מה זה עושה, מי משתמש בו <span class="hint">מכריח דבר אמיתי שאפשר להראות על המסך</span></span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">למי כמוך, שבטוח שזה לא בשבילו, היית ממליץ?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">תשלים את המשפט: "אם אתה מישהו ש___, זה בשבילך."</span></li>
+      </ul>
+    </section>
+
+    <div class="rules">
+      <h4>3 כללים לסט</h4>
+      <ul>
+        <li><span class="n">1</span><span>אף פעם לא מסתפקים בשם תואר. "התקדמתי יפה" → מיד <b>"תשים על זה מספר. כמה?"</b></span></li>
+        <li><span class="n">2</span><span>תמיד שאלות פתוחות (<b>מה / איך</b>), אף פעם כן/לא.</span></li>
+        <li><span class="n">3</span><span><b>גולמי מנצח מלוטש.</b> רגש אמיתי ומגומגם ממיר יותר מטייק חלק.</span></li>
+      </ul>
+    </div>
+
+    <p class="foot">nCode · Vibe Coding — הסימונים נשמרים במכשיר. "סט חדש" מאפס לתלמיד הבא.</p>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var KEY = "ncode-testimonial-checklist-v1";
+    var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+    var student = document.getElementById("student");
+    var barFill = document.getElementById("barFill");
+    var count = document.getElementById("count");
+    var total = qs.length;
+
+    function save() {
+      try {
+        var state = { student: student.value, checked: qs.map(function (q) { return q.getAttribute("aria-checked") === "true"; }) };
+        localStorage.setItem(KEY, JSON.stringify(state));
+      } catch (e) {}
+    }
+
+    function render() {
+      var done = qs.filter(function (q) { return q.getAttribute("aria-checked") === "true"; }).length;
+      var pct = total ? Math.round((done / total) * 100) : 0;
+      barFill.style.width = pct + "%";
+      count.textContent = done + "/" + total;
+    }
+
+    function toggle(q) {
+      var on = q.getAttribute("aria-checked") === "true";
+      q.setAttribute("aria-checked", on ? "false" : "true");
+      render(); save();
+    }
+
+    qs.forEach(function (q) {
+      q.addEventListener("click", function () { toggle(q); });
+      q.addEventListener("keydown", function (e) {
+        if (e.key === " " || e.key === "Enter") { e.preventDefault(); toggle(q); }
+      });
+    });
+
+    student.addEventListener("input", save);
+
+    document.getElementById("resetBtn").addEventListener("click", function () {
+      if (!confirm("לאפס את הצ׳ק־ליסט לתלמיד הבא?")) return;
+      qs.forEach(function (q) { q.setAttribute("aria-checked", "false"); });
+      student.value = "";
+      render(); save();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    // restore
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var s = JSON.parse(raw);
+        if (s && typeof s.student === "string") student.value = s.student;
+        if (s && Array.isArray(s.checked)) {
+          s.checked.forEach(function (v, i) { if (qs[i] && v) qs[i].setAttribute("aria-checked", "true"); });
+        }
+      }
+    } catch (e) {}
+
+    render();
+  })();
+</script>
+
+</body>
+</html>
