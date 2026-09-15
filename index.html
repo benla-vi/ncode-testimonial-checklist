@@ -212,6 +212,10 @@
 
   .foot { text-align: center; color: var(--faint); font-size: 12px; margin-top: 22px; }
 
+  .src { display: block; margin-bottom: 5px; font-size: 10.5px; font-weight: 800; letter-spacing: .4px; color: #7fb2ff; }
+  .q[aria-checked="true"] .txt .src { text-decoration: none; }
+  .intro p.legend { margin-top: 10px; font-size: 13px; color: #7fb2ff; }
+
   @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
   }
@@ -237,7 +241,7 @@
 
       <div class="progress">
         <div class="bar"><i id="barFill"></i></div>
-        <span class="count" id="count">0/24</span>
+        <span class="count" id="count">0/29</span>
       </div>
     </div>
   </div>
@@ -245,12 +249,13 @@
   <div class="wrap">
     <section class="intro">
       <div class="kick">Testimonial Shoot</div>
-      <h2>עדות טובה היא סיפור מסע — לא מחמאה</h2>
-      <p>התלמיד הוא הגיבור, אתה המנטור, הקורס הוא הגשר. תסמן כל שאלה שסגרת. שתי שאלות הן <b style="color:var(--gold)">יריות זהב</b> — בלעדיהן אין עדות.</p>
+      <h2>עדות טובה היא סיפור מסע, לא מחמאה</h2>
+      <p>התלמיד הוא הגיבור, אתה המנטור, הקורס הוא הגשר. תסמן כל שאלה שסגרת. שתי שאלות הן <b style="color:var(--gold)">יריות זהב</b> , בלעדיהן אין עדות.</p>
+      <p class="legend">שאלה עם תווית כחולה נוספה מתוך שיחות המכירה שלנו. היא עונה על ספק שלידים מעלים שוב ושוב.</p>
 
       <div class="goldnote">
-        <div class="g"><span class="star">★</span><span><b>יריית זהב 1 —</b> "לא ידעתי לתכנת שורה, ובניתי X". מנטרל בבת אחת: סקאם · לא טכני · לא בשבילי.</span></div>
-        <div class="g"><span class="star">★</span><span><b>יריית זהב 2 —</b> מספר ראשון עם תאריך. לקוח/מכירה ראשונים: כמה × כמה = כמה בחודש.</span></div>
+        <div class="g"><span class="star">★</span><span><b>יריית זהב 1:</b> "לא ידעתי לתכנת שורה, ובניתי X". מנטרל בבת אחת: סקאם · לא טכני · לא בשבילי.</span></div>
+        <div class="g"><span class="star">★</span><span><b>יריית זהב 2:</b> מספר ראשון עם תאריך. לקוח/מכירה ראשונים: כמה × כמה = כמה בחודש.</span></div>
       </div>
     </section>
 
@@ -267,9 +272,9 @@
       <div class="phase-head"><span class="phase-num">01</span><h3>ה"לפני"</h3><span class="sub">· הכאב · כאן הצופה מזהה את עצמו</span></div>
       <ul class="list">
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה היה המצב שלך לפני? עם מה נאבקת?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה כבר ניסית כדי לבנות / להרוויח — ולמה זה לא עבד?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה כבר ניסית לפני כדי לבנות או להרוויח? קורסים, יוטיוב, ChatGPT. איפה נתקעת?</span></li>
         <li class="q gold" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="tag">יריית זהב 1</span>מה היה הרקע הטכני שלך? כמה קוד ידעת לפני?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ממה הכי פחדת? <span class="hint">לא מספיק טכני · מבוגר מדי · אין רעיון · אין זמן</span></span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ממה הכי פחדת? <span class="hint">אין זמן · לא מספיק טכני · שאכשל שוב · אין רעיון · מבוגר מדי</span></span></li>
       </ul>
     </section>
 
@@ -278,11 +283,13 @@
       <div class="phase-head"><span class="phase-num">02</span><h3>היסוס והחלטה</h3><span class="sub">· השלב הכי ממיר</span></div>
       <ul class="list">
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה היה ההיסוס הכי גדול <b>לפני</b> ששילמת?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="src">מתוך שיחות מכירה · 38 שיחות</span>זה לא היה זול. איך הרגשת עם הסכום אז, ואיך אתה מסתכל עליו היום?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">אם קלוד יודע לקודד, למה שאשלם?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה גרם לך לחשוב שאולי זה לא יעבוד דווקא בשבילך?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">בטח כבר נכווית מקורסים באינטרנט — מה היה פה שונה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">בטח כבר נכווית מקורסים באינטרנט, מה היה פה שונה?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="src">מתוך שיחות מכירה · 22 שיחות</span>מה אמרו בבית כשסיפרת שאתה נכנס לזה? ומה אומרים היום?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה בסוף הכריע? למה אמרת כן?</span></li>
-        <li class="q clip" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="miniclip">◆ לרוב הקליפ הכי חזק</span>למישהו שיושב עכשיו על הגדר ומרגיש בדיוק כמוך — מה תגיד לו?</span></li>
+        <li class="q clip" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="miniclip">◆ לרוב הקליפ הכי חזק</span>למישהו שיושב עכשיו על הגדר ומרגיש בדיוק כמוך, מה תגיד לו?</span></li>
       </ul>
     </section>
 
@@ -292,8 +299,10 @@
       <ul class="list">
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הפתיע אותך לגבי איך זה <b>באמת</b> עובד מבפנים?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">היה רגע שפתאום נפל האסימון? מה הוא היה?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">התחלת בלי רקע — איך התמודדת עם הצד הטכני / ה-AI?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">הליווי והקהילה — מה נתנו לך שלא היית מקבל לבד?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">התחלת בלי רקע, איך התמודדת עם הצד הטכני / ה-AI?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="src">מתוך שיחות מכירה · 31 שיחות</span>איך זה נראה ביום יום? מתי ישבת על זה, ליד העבודה והבית?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">הליווי והקהילה, מה נתנו לך שלא היית מקבל לבד?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="src">מתוך שיחות מכירה · 17 שיחות</span>ספר על פעם שנתקעת. מה עשית, ותוך כמה זמן קיבלת עזרה?</span></li>
       </ul>
     </section>
 
@@ -302,11 +311,12 @@
       <div class="phase-head"><span class="phase-num">04</span><h3>ה"אחרי"</h3><span class="sub">· התוצאה · כאן דורשים מספרים</span></div>
       <ul class="list">
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה אתה יכול לעשות היום שפשוט לא יכולת קודם?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הדבר הראשון שבנית ושחררת לעולם — ומתי בדיוק?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הדבר הראשון שבנית ושחררת לעולם, ומתי בדיוק?</span></li>
         <li class="q gold" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="tag">יריית זהב 2</span>מתי קיבלת לקוח / תשלום ראשון? <b>כמה, ותוך כמה זמן?</b><span class="hint">תלחץ למספר מדויק: כמה לקוחות × כמה ₪ = כמה בחודש</span></span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><span class="src">מתוך שיחות מכירה · 23 שיחות</span>אומרים שיש כבר מיליון אפליקציות. איך הגיעו אליך הלקוחות הראשונים?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה זה היה עולה לך לשכור מפתח שיבנה לך את זה?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מה הפתיע אותך במהירות שזה קרה?</span></li>
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מעבר לכסף — איך זה שינה איך אתה מרגיש לגבי עצמך ולגבי העתיד?</span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">מעבר לכסף, איך זה שינה איך אתה מרגיש לגבי עצמך ולגבי העתיד?</span></li>
       </ul>
     </section>
 
@@ -314,7 +324,7 @@
     <section class="phase">
       <div class="phase-head"><span class="phase-num">05</span><h3>למי זה מתאים</h3><span class="sub">· הסגירה · מעביר את המקל לצופה</span></div>
       <ul class="list">
-        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ספר בדיוק על מה שבנית — שם, מה זה עושה, מי משתמש בו <span class="hint">מכריח דבר אמיתי שאפשר להראות על המסך</span></span></li>
+        <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">ספר בדיוק על מה שבנית, שם, מה זה עושה, מי משתמש בו, ומה החלק הכי מסובך בו? <span class="hint">להראות את המוצר על המסך</span></span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">למי כמוך, שבטוח שזה לא בשבילו, היית ממליץ?</span></li>
         <li class="q" role="checkbox" aria-checked="false" tabindex="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#0c1a10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt">תשלים את המשפט: "אם אתה מישהו ש___, זה בשבילך."</span></li>
       </ul>
@@ -329,13 +339,13 @@
       </ul>
     </div>
 
-    <p class="foot">nCode · Vibe Coding — הסימונים נשמרים במכשיר. "סט חדש" מאפס לתלמיד הבא.</p>
+    <p class="foot">nCode · Vibe Coding, הסימונים נשמרים במכשיר. "סט חדש" מאפס לתלמיד הבא.</p>
   </div>
 </main>
 
 <script>
   (function () {
-    var KEY = "ncode-testimonial-checklist-v2";
+    var KEY = "ncode-testimonial-checklist-v3";
     var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
     var student = document.getElementById("student");
     var barFill = document.getElementById("barFill");
